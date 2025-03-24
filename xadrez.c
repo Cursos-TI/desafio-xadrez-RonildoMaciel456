@@ -1,11 +1,10 @@
 #include <stdio.h>
-
 // Desafio de Xadrez - MateCheck
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
     // Nível Novato - Movimentação das Peças
-    // variáveis para a realização dos loops 
+    // variáveis para a realização dos loops: 
     int x = 1;
     int y = 1;
     int z = 1;
