@@ -5,7 +5,7 @@
 
 int main() {
     // Nível Novato - Movimentação das Peças
-    // variáveis constantes para representar o número de casas que cada peça pode se mover.
+    // variáveis para a realização dos loops 
     int x = 1;
     int y = 1;
     int z = 1;
