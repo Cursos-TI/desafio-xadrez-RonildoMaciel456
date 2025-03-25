@@ -2,9 +2,35 @@
 // Desafio de Xadrez - MateCheck
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
+void moivimentoBispo(int numCasas) {
+    int x = 1, y = 1;
+
+    if (numCasas > 0) {
+        while (x <= numCasas) {
+            printf("Cima, ");
+            x++;
+            while (y < x) {
+                printf("Direita\n");
+                y++;
+            }
+        }
+        /*
+        Aqui eu estou meio que "forçando" a chamada recursiva a acontecer apenas quando
+        os valores de x e y são reiniciados para 1 dentro dos loops
+        Isso garante que os loops externo e interno não imprimam os dados mais vezes do que
+        o esperado.
+        */
+        if ((y == 1) && (x == 1)) {
+            moivimentoBispo(numCasas - 1);
+        }
+   }
+} 
+
+
 int main() {
     // Nível Novato - Movimentação das Peças
     // variáveis para a realização dos loops: 
+    /*
     int x = 1, y = 1, z = 1, i, j;
 
     
@@ -60,6 +86,7 @@ int main() {
        assim o loop e impedindo que "Esquerda" seja impresso infinitamente. Assim o resultado é: "Baixo, Baixo, Esquerda".
        Simulando a movimentação em "L" da peça "cavalo" do Xadrez.
     */
+    /*
     printf("*** Movimento em 'L' do Cavalo ***\n");
     for(i = 1; i <= 1; i++) {
         for(j = 0; j <= i; j++) {
@@ -71,20 +98,27 @@ int main() {
 
         }
         printf("\n");
+    */
     
-    
-    
-    
-    
-    
-
-
     // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+
+    // Implementação de Movimentação do Bispo
+    // Movimentação do Bispo em diagonal usando Funções Recursivas e Loops Aninhados
+    printf("*** Movimento do Bispo ***\n");
+    int quantCasas = 5;
+    moivimentoBispo(quantCasas);
+
+    // Implementação de Movimentação da Torre
+    // Movimentação da Torre 5 casas para a direita usando Função Recursiva
+    printf("*** Movimento do Torre ***\n");
+
+
+
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
 
+ return 0;
 }
+
