@@ -1,14 +1,13 @@
 #include <stdio.h>
-// Desafio de Xadrez - MateCheck
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 void moivimentoBispo(int numCasas) {
     int x = 1, y = 1;
-
     if (numCasas > 0) {
+        //loop responsável pelo movimento vertical
         while (x <= numCasas) {
             printf("Cima, ");
             x++;
+             //loop responsável pelo movimento horizontal
             while (y < x) {
                 printf("Direita\n");
                 y++;
@@ -20,105 +19,95 @@ void moivimentoBispo(int numCasas) {
         Isso garante que os loops externo e interno não imprimam os dados mais vezes do que
         o esperado.
         */
-        if ((y == 1) && (x == 1)) {
-            moivimentoBispo(numCasas - 1);
-        }
+    if ((y == 1) && (x == 1)) {
+       moivimentoBispo(numCasas - 1);
+    }
    }
-} 
+}
+
+void movimentoTorre(int numCasas) {
+    if (numCasas > 0){
+        printf("Direita\n");
+
+        movimentoTorre(numCasas - 1);
+    }
+}
+
+void movimentoRainha(int numCasas) {
+    if (numCasas > 0){
+        printf("Esquerda\n");
+
+        movimentoRainha(numCasas - 1);
+    }
+}
 
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // variáveis para a realização dos loops: 
-    /*
-    int x = 1, y = 1, z = 1, i, j;
-
-    
-    printf("*** Desafio de Xadrez - MateCheck - Nível Novato ***\n\n");
-
-    // Implementação de Movimentação do Bispo
-    // Movimentação do Bispo em diagonal.
-    // Uso do "do while"
-    printf("*** Movimento do Bispo ***\n");
-    do
-    {
-        printf("Cima,Direita\n");
-        x++;
-
-    } while (x <= 5);
-
+    printf("*** Desafio de Xadrez - MateCheck ***\n");
+    printf("*** Nível Mestre - Funções Recursivas e Loops Aninhados ***\n");
+    printf("*** Objetivo: utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo. ***\n");
     printf("\n");
 
-    // Implementação de Movimentação da Torre
-    // Movimentação da Torre 5 casas para a direita
-    // Uso do "while"
-    printf("*** Movimento da Torre ***\n");
-    while (y <= 5)
-    {
-        printf("Direita\n");
-        y++;
-    }
 
+    // Implementação da Movimentação do Bispo
+    // Movimentação do Bispo em diagonal usando Funções Recursivas e Loops Aninhados
+    printf("*** Movimento do Bispo ***\n");
+    int bispoCasas = 5;
+    moivimentoBispo(bispoCasas);
+    printf("\n");
+
+    // Implementação da Movimentação da Torre
+    // Movimentação da Torre 5 casas para a direita usando Função Recursiva
+    printf("*** Movimento do Torre ***\n");
+    int torreCasas = 5;
+    movimentoTorre(torreCasas);
     printf("\n");
 
     // Implementação de Movimentação da Rainha
     // Movimentação da Rainha 8 casas para a esquerda
-    // Uso do "for"
     printf("*** Movimento da Rainha ***\n");
-    for (z = 1; z <= 8; z++)
-    {
-        printf("Esquerda\n");
-    }
-
+    int rainhaCasas = 8;
+    movimentoRainha(rainhaCasas);
     printf("\n");
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // O loop representar a movimentação horizontal e outro vertical.
-    /*
-       Na 1º interação do laço interno for, "j" = 0 e "i" no laço externo é 1,
-       o que ainda atende a condição "i <= 1" e a condição "j <= i" imprimindo o movimento "Baixo" uma vez.
-       Na 2º interação o "j" = 1 e "i" ainda é <= 1, o que ainda atende as condições "i <= 1"
-       e portanto ainda "j <= i", imprimindo a movimentação "Baixo" pela 2º vez. Agora tanto "i"
-       quanto "j" incrementa para 2. o que torna as condições "i <= 1" e "j <= i" falsas.
-       No loop while "j <= 2" é uma condição verdadeira, porque no fim do loop for interno
-       "j" passa a ser incrementado pra 2. Então a movimentação "Esquerda" é impressa uma vez. Logo após isso
-       há um incremento de "j" para 3 (j++) o que torna a condição "j <= 2" do loop while falsa. encerrando 
-       assim o loop e impedindo que "Esquerda" seja impresso infinitamente. Assim o resultado é: "Baixo, Baixo, Esquerda".
-       Simulando a movimentação em "L" da peça "cavalo" do Xadrez.
-    */
-    /*
+    
+    // Implementação da movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas
+    // Incluído também o uso de continue e break dentro dos loops
     printf("*** Movimento em 'L' do Cavalo ***\n");
+    int i, j;
     for(i = 1; i <= 1; i++) {
-        for(j = 0; j <= i; j++) {
-            printf("Baixo,");
+        for(j = 0; j <= i && j < 2; j++) {
+            printf("Cima,");
+            if(j != i) {
+                continue;
+            }
         } while (j <= 2) {
-            printf("Esquerda");
+            printf("Direita");
             j++;
+            break;
         }  
 
         }
-        printf("\n");
-    */
+        printf("\n\n");
+        printf("### FIM DO PROJETO! ###");
     
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-
-    // Implementação de Movimentação do Bispo
-    // Movimentação do Bispo em diagonal usando Funções Recursivas e Loops Aninhados
-    printf("*** Movimento do Bispo ***\n");
-    int quantCasas = 5;
-    moivimentoBispo(quantCasas);
-
-    // Implementação de Movimentação da Torre
-    // Movimentação da Torre 5 casas para a direita usando Função Recursiva
-    printf("*** Movimento do Torre ***\n");
-
-
-
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-
- return 0;
+   return 0;
 }
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
